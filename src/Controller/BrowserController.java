@@ -73,6 +73,11 @@ public class BrowserController extends Menu<String> {
         }
     }
 
+    /**
+     * pop the current backstack
+     * push current browser to forward stack
+     * current browser point to the browser popped by the backstack
+     */
     public void goBack() {
         try {
             Browser temp = backStack.pop();
@@ -109,8 +114,9 @@ public class BrowserController extends Menu<String> {
 
     private void navigateBack(int steps) throws Exception {
         while (steps > 0 && !backStack.isEmpty()) {
+            Browser temp = backStack.pop();
             forwardStack.push(currentBrowser);
-            currentBrowser = backStack.pop();
+            currentBrowser = temp;
             steps--;
         }
         System.out.println("Went back to: " + currentBrowser);
@@ -118,15 +124,12 @@ public class BrowserController extends Menu<String> {
 
     private void navigateForward(int steps) throws Exception {
         while (steps > 0 && !forwardStack.isEmpty()) {
+            Browser temp = forwardStack.pop();
             backStack.push(currentBrowser);
-            currentBrowser = forwardStack.pop();
+            currentBrowser = temp;
             steps--;
         }
         System.out.println("Went forward to: " + currentBrowser);
-    }
-
-    public Browser getCurrentBrowser() {
-        return currentBrowser;
     }
 
     public void getHistory() {

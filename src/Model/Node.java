@@ -9,12 +9,12 @@ public class Node<T> {
     public Node() {
     }
 
-    public Node(T dataOfNode, Node next) {
+    public Node(T dataOfNode, Node<T> next) {
         this.dataOfNode = dataOfNode;
         this.next = next;
     }
 
-    public Node(T dataOfNode, Node next, Node pre) {
+    public Node(T dataOfNode, Node<T> next, Node<T> pre) {
         this.dataOfNode = dataOfNode;
         this.next = next;
         this.pre = pre;
@@ -28,11 +28,11 @@ public class Node<T> {
         this.dataOfNode = dataOfNode;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
         return next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node<T> next) {
         this.next = next;
     }
 }

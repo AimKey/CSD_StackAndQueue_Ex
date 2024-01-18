@@ -17,7 +17,7 @@ public class BrowserController extends Menu<String> {
     private Stack<Browser> forwardStack;
     private Browser currentBrowser;
     private Library library = new Library();
-    private ArrayList<Browser> history = new ArrayList<>();
+    private Stack<Browser> history = new Stack<>();
 
     public BrowserController(Menu<String> parentMenu) {
         super("FPT Browser", mc, MainController.parentMenu);
@@ -83,7 +83,7 @@ public class BrowserController extends Menu<String> {
     public void goBack() {
         try {
             Browser temp = backStack.pop();
-            if (currentBrowser != null) history.add(currentBrowser);
+            if (currentBrowser != null) history.push(currentBrowser);
 
             forwardStack.push(currentBrowser);
             currentBrowser = temp;
@@ -96,7 +96,7 @@ public class BrowserController extends Menu<String> {
     public void goForward() {
         try {
             Browser temp = forwardStack.pop();
-            if (currentBrowser != null) history.add(currentBrowser);
+            if (currentBrowser != null) history.push(currentBrowser);
 
             backStack.push(currentBrowser);
             currentBrowser = temp;
@@ -126,7 +126,7 @@ public class BrowserController extends Menu<String> {
             steps--;
         }
         System.out.println("Went back to: " + currentBrowser);
-        if (currentBrowser != null) history.add(currentBrowser);
+        if (currentBrowser != null) history.push(currentBrowser);
     }
 
     private void navigateForward(int steps) throws Exception {
@@ -137,17 +137,15 @@ public class BrowserController extends Menu<String> {
             steps--;
         }
         System.out.println("Went forward to: " + currentBrowser);
-        if (currentBrowser != null) history.add(currentBrowser);
+        if (currentBrowser != null) history.push(currentBrowser);
     }
 
     public void getHistory() {
-        System.out.println("Browsing History:");
         if (history.isEmpty()) {
             System.out.println("Browser is empty, go surfing :3");
         } else {
-            for (int i = 0; i < history.size(); i++) {
-                System.out.println(i+1 + ". " + history.get(i));
-            }
+            System.out.println("Browsing History:");
+            printStack(history);
             System.out.println("Total: " + history.size());
         }
 

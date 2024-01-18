@@ -4,6 +4,8 @@ import Common.Library;
 import Model.Browser;
 import Model.Stack;
 import View.Menu;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +17,7 @@ public class BrowserController extends Menu<String> {
     private Stack<Browser> forwardStack;
     private Browser currentBrowser;
     private Library library = new Library();
+    private ArrayList<Browser> history = new ArrayList<>();
 
     public BrowserController(Menu<String> parentMenu) {
         super("FPT Browser", mc, MainController.parentMenu);
@@ -48,6 +51,7 @@ public class BrowserController extends Menu<String> {
                 } catch (Exception ex) {
                     Logger.getLogger(BrowserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                break;
             }
             case 6:
                 System.out.println("Returning");
@@ -79,6 +83,8 @@ public class BrowserController extends Menu<String> {
     public void goBack() {
         try {
             Browser temp = backStack.pop();
+            if (currentBrowser != null) history.add(currentBrowser);
+
             forwardStack.push(currentBrowser);
             currentBrowser = temp;
             System.out.println("Went back to: " + currentBrowser);
@@ -90,6 +96,8 @@ public class BrowserController extends Menu<String> {
     public void goForward() {
         try {
             Browser temp = forwardStack.pop();
+            if (currentBrowser != null) history.add(currentBrowser);
+
             backStack.push(currentBrowser);
             currentBrowser = temp;
             System.out.println("Went forward to: " + currentBrowser);
@@ -118,6 +126,7 @@ public class BrowserController extends Menu<String> {
             steps--;
         }
         System.out.println("Went back to: " + currentBrowser);
+        if (currentBrowser != null) history.add(currentBrowser);
     }
 
     private void navigateForward(int steps) throws Exception {
@@ -128,15 +137,20 @@ public class BrowserController extends Menu<String> {
             steps--;
         }
         System.out.println("Went forward to: " + currentBrowser);
+        if (currentBrowser != null) history.add(currentBrowser);
     }
 
     public void getHistory() {
         System.out.println("Browsing History:");
-        System.out.println("Backward History:");
-        printStack(backStack);
+        if (history.isEmpty()) {
+            System.out.println("Browser is empty, go surfing :3");
+        } else {
+            for (int i = 0; i < history.size(); i++) {
+                System.out.println(i+1 + ". " + history.get(i));
+            }
+            System.out.println("Total: " + history.size());
+        }
 
-        System.out.println("Forward History:");
-        printStack(forwardStack);
     }
 
     private void printStack(Stack<Browser> stack) {

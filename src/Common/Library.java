@@ -13,7 +13,7 @@ public class Library {
     public int getInt(String td, String errorMsg) {
         System.out.print(td + ": ");
         String s = sc.nextLine();
-        if (s.length()==0) return -1;
+        if (s.isEmpty()) return -1;
         while (!s.matches("[0-9]+")) {
             System.out.println("\u001B[31m" + errorMsg + "\u001B[0m");
             s = getString(td);
@@ -29,7 +29,7 @@ public class Library {
     public String getString(String td, String errorMsg) {
         System.out.print(td + ": ");
         String s = sc.nextLine();
-        if (s.length() == 0) return "";
+        if (s.isEmpty()) return "";
         while (!s.matches("[A-Za-z ]+")) {
             System.out.println("\u001B[31m" + errorMsg + "\u001B[0m");
             s = getString(td);

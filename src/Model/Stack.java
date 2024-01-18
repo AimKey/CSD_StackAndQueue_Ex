@@ -15,9 +15,9 @@ public class Stack<T> {
 
     public void push(T data) {
         if (head == null) {
-            head = new Node(data, null);
+            head = new Node<>(data, null);
         } else {
-            head = new Node(data, head);
+            head = new Node<>(data, head);
         }
     }
 
@@ -42,7 +42,7 @@ public class Stack<T> {
     }
 
     public void display() {
-        Node n = head;
+        Node<T> n = head;
         while (n != null) {
             System.out.println(n.getNodeData());
             n = n.next;

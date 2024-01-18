@@ -67,7 +67,7 @@ public class BrowserController extends Menu<String> {
             Browser newBrowser = new Browser(pageTitle, desc);
             forwardStack.push(newBrowser);
 //            currentBrowser = newBrowser;
-            System.out.println("Added a new page: " + currentBrowser + " at the last position");
+            System.out.println("Added a new page: " + newBrowser + " at the last position");
             String choice = library.getString("Continue (y/n)?: ");
             if (choice.equalsIgnoreCase("n")) {
                 break;

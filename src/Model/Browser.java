@@ -36,10 +36,9 @@ public class Browser {
 
     @Override
     public String toString() {
-        return "{" +
-            " title='" + getTitle() + "'" +
-            ", description='" + getDescription() + "'" +
-            "}";
+        return
+            "Title='" + getTitle() + "'" +
+            ", description='" + getDescription() + "'";
     }
     
 }

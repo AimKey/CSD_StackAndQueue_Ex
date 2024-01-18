@@ -4,14 +4,12 @@ import View.Menu;
 
 public class PrintController extends Menu<String> {
 
-    private Menu parentMenu;
 
 //    Enqueue, Dequeue, display queue, View current print item
     private static String[] mc = {"Add item", "Print item", "Display queue", "View current item", "Exit"};
 
     public PrintController(Menu parentMenu) {
-        super("Print queue", mc, parentMenu);
-        this.parentMenu = parentMenu;
+        super("Print queue", mc, MainController.parentMenu);
     }
 
     @Override

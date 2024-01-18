@@ -4,5 +4,18 @@ build
 nbproject
 test
 Stack_Queue_Ex.iml
+<<<<<<< HEAD
 manifest.mf
 out
+=======
+manifest.mf
+build/classes/Common/Library.class
+build/classes/Controller/BrowserController.class
+build/classes/Controller/MainController.class
+build/classes/Controller/PrintController.class
+build/classes/Model/ArrayQueue.class
+build/classes/Model/Browser.class
+build/classes/View/Menu.class
+nbproject/private/private.properties
+nbproject/private/private.xml
+>>>>>>> b51605d4caa18234569bc45f55831e8edded8741

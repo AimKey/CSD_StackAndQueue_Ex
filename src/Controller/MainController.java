@@ -4,7 +4,7 @@ import View.Menu;
 
 public class MainController extends Menu<String> {
 
-    private Menu<String> parentMenu;
+    protected static Menu<String> parentMenu;
     private static String[] mc = {"Browser", "Printer", "Exit"};
 
     public MainController(Menu<String> parentMenu) {

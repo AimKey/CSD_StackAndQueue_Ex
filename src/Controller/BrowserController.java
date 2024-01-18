@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 public class BrowserController extends Menu<String> {
 
-    // private Menu<String> parentMenu;
     private static String[] mc = {"Add page", "Back button", "Forward button", "History", "Navigate", "Return to menu"};
     private Stack<Browser> backStack;
     private Stack<Browser> forwardStack;
@@ -18,8 +17,7 @@ public class BrowserController extends Menu<String> {
     private Library library = new Library();
 
     public BrowserController(Menu<String> parentMenu) {
-        super("FPT Browser", mc, parentMenu);
-        this.parentMenu = parentMenu;
+        super("FPT Browser", mc, MainController.parentMenu);
         backStack = new Stack<>();
         forwardStack = new Stack<>();
         currentBrowser = new Browser("Home", "Welcome to the homepage.");

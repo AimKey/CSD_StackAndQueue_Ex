@@ -125,17 +125,15 @@ public class ArrayQueue<T extends Comparable<T>> {
     }
 
     public void display() {
-        boolean isEmpty = true;
         int count = 0;
         for (Node<T> node : a) {
             if (node != null) {
                 System.out.print("[" + node.getNodeData() + "] ");
-                isEmpty = false;
                 count++;
             }
         }
 
-        if (isEmpty) {
+        if (isEmpty()) {
             System.out.print("[Empty]");
         }
 

@@ -114,13 +114,19 @@ public class ArrayQueue<T> {
     }
 
     public void display() {
+        int count = 0;
         for (Node<T> node : a) {
-            if (node == null) {
-                System.out.print("[Empty] ");
+            if (node != null) {
+                System.out.print("[" + node.getNodeData() + "] ");
+                count++;
             }
-            else System.out.print("[" + node.getNodeData() + "] ");
         }
-        System.out.println("\nTotal: " + a.length);
+
+        if (isEmpty()) {
+            System.out.print("[Empty]");
+        }
+
+        System.out.println("\nTotal: " + count);
         System.out.println("First: " + first + ", Last: " + last);
     }
 

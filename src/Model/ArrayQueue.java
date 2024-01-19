@@ -5,7 +5,7 @@ package Model;
  *
  * @author phamm
  */
-public class ArrayQueue<T> {
+public class ArrayQueue<T extends Comparable<T>> {
 
     protected Node<T>[] a;
     protected int max, first, last; // First is for dequeue, last is for enqueue
@@ -13,7 +13,7 @@ public class ArrayQueue<T> {
     public ArrayQueue(int max) {
         this.max = max;
         a = new Node[max];
-//        Dat con tro dau va cuoi o vi tri -1 (Chua nam trong array)
+        // Dat con tro dau va cuoi o vi tri -1 (Chua nam trong array)
         first = last = -1;
     }
 
@@ -28,9 +28,9 @@ public class ArrayQueue<T> {
     public boolean isEmpty() {
         return first == -1;
     }
-    
-//    first o vi tri dau -> Sau khi chay het 1 vong
-//    last o vi tri cuoi - 1 -> Sau last o cuoi array
+
+    // first o vi tri dau -> Sau khi chay het 1 vong
+    // last o vi tri cuoi - 1 -> Sau last o cuoi array
     public boolean isFull() {
         return (first == 0 && last == max - 1 || first == last + 1);
     }
@@ -38,7 +38,7 @@ public class ArrayQueue<T> {
     private boolean grow() {
         int i, j;
         int max1 = max + max / 2;
-        Node[] a1 = new Node[max1];
+        Node<T>[] a1 = new Node[max1];
         if (last >= first) {
             for (i = first; i <= last; i++) {
                 a1[i - first] = a[i];
@@ -59,22 +59,33 @@ public class ArrayQueue<T> {
         return (true);
     }
 
-    public void enqueue(Node x) {
-//        If array queue is empty, grow 
+    public void enqueue(Node<T> x) {
+        // If array queue is empty, grow
         if (isFull() && !grow()) {
             return;
         }
-//        Last o cuoi (Luc nay cho no quay ve dau hoac chua khoi tao)
-        if (last == max - 1 || last == -1) {
-            a[0] = x;
-            last = 0;
-//            First khoi tao chua, neu chua thi cho no len 0
-            if (first == -1) {
-                first = 0;
+
+        // Enqueue based on priority (using compareTo)
+        if (isEmpty() || x.getNodeData().compareTo(a[last].getNodeData()) <= 0) {
+            // If array queue is empty or x has lower or equal priority than the last element
+            if (last == max - 1 || last == -1) {
+                a[0] = x;
+                last = 0;
+                // First khoi tao chua, neu chua thi cho no len 0
+                if (first == -1) {
+                    first = 0;
+                }
+            } else {
+                a[++last] = x;
             }
-//            tang pointer last va gan = x
         } else {
-            a[++last] = x;
+            // If x has higher priority than the last element, shift elements to make room
+            int i;
+            for (i = last; i >= first && x.getNodeData().compareTo(a[i].getNodeData()) > 0; i--) {
+                a[i + 1] = a[i];
+            }
+            a[i + 1] = x;
+            last++;
         }
     }
 
@@ -87,7 +98,7 @@ public class ArrayQueue<T> {
         if (isEmpty()) {
             throw new Exception();
         }
-        return (a[first]);
+        return a[first];
     }
 
     /**
@@ -104,30 +115,31 @@ public class ArrayQueue<T> {
         {
             first = last = -1;
         } else if (first == max - 1) {
-//           Dang o cuoi array, quay ve dau
+            // Dang o cuoi array, quay ve dau
             first = 0;
         } else {
-//            Lay phan tu o dau ok, advance
+            // Lay phan tu o dau ok, advance
             first++;
         }
-        return (x);
+        return x;
     }
 
     public void display() {
+        boolean isEmpty = true;
         int count = 0;
         for (Node<T> node : a) {
             if (node != null) {
                 System.out.print("[" + node.getNodeData() + "] ");
+                isEmpty = false;
                 count++;
             }
         }
 
-        if (isEmpty()) {
+        if (isEmpty) {
             System.out.print("[Empty]");
         }
 
         System.out.println("\nTotal: " + count);
         System.out.println("First: " + first + ", Last: " + last);
     }
-
 }

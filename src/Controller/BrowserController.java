@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class BrowserController extends Menu<String> {
 
-    private static String[] mc = {"Add page", "Back button", "Forward button", "History", "Navigate", "Return to menu"};
+    private static String[] mc = {"Add page", "Back button", "Forward button", "History", "Navigate Back", "Navigate Forward", "Return to menu"};
     private Stack<Browser> backStack;
     private Stack<Browser> forwardStack;
     private Browser currentBrowser;
@@ -46,13 +46,21 @@ public class BrowserController extends Menu<String> {
                 break;
             case 5: {
                 try {
-                    navigate();
+                    navigateBack();
                 } catch (Exception ex) {
                     System.out.println("Hehe chua fix");
                 }
                 break;
             }
-            case 6:
+            case 6: {
+                try {
+                    navigateForward();
+                } catch (Exception ex) {
+                    Logger.getLogger(BrowserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            }
+            case 7:
                 System.out.println("Returning");
                 returnToPMenu();
                 break;
@@ -106,41 +114,39 @@ public class BrowserController extends Menu<String> {
         }
     }
 
-    public void navigate() throws Exception {
-        int pageChoice = library.getInt("Enter page index to navigate: ");
 
+    private void navigateBack() throws Exception {
+        int pageChoice = library.getInt("How many page do you want to back: ");
         if (pageChoice >= 1 && pageChoice <= backStack.size()) {
-            navigateBack(pageChoice);
-        } else if (pageChoice >= 1 && pageChoice <= forwardStack.size()) {
-            navigateForward(pageChoice);
+            while (pageChoice > 0 && !backStack.isEmpty()) {
+                Browser temp = backStack.pop();
+                forwardStack.push(currentBrowser);
+                currentBrowser = temp;
+                pageChoice--;
+            }
+            System.out.println("Went back to: " + currentBrowser);
+            if (currentBrowser != null) history.push(currentBrowser);
         } else {
-            System.out.println("Invalid page index.");
+            System.out.println("Cannot back further!");
         }
     }
 
-    private void navigateBack(int steps) throws Exception {
-        while (steps > 0 && !backStack.isEmpty()) {
-            Browser temp = backStack.pop();
-            forwardStack.push(currentBrowser);
-            currentBrowser = temp;
-            steps--;
-        }
-        System.out.println("Went back to: " + currentBrowser);
-        if (currentBrowser != null) {
-            history.push(currentBrowser);
-        }
-    }
 
-    private void navigateForward(int steps) throws Exception {
-        while (steps > 0 && !forwardStack.isEmpty()) {
-            Browser temp = forwardStack.pop();
-            backStack.push(currentBrowser);
-            currentBrowser = temp;
-            steps--;
-        }
-        System.out.println("Went forward to: " + currentBrowser);
-        if (currentBrowser != null) {
-            history.push(currentBrowser);
+    private void navigateForward() throws Exception {
+        int steps = library.getInt("How many page do you want to go forward: ");
+        if (steps >= 1 && steps <= forwardStack.size()) {
+            while (steps > 0 && !forwardStack.isEmpty()) {
+                Browser temp = forwardStack.pop();
+                backStack.push(currentBrowser);
+                currentBrowser = temp;
+                steps--;
+            }
+            System.out.println("Went forward to: " + currentBrowser);
+            if (currentBrowser != null) {
+                history.push(currentBrowser);
+            }
+        } else {
+            System.out.println("Cannot forward further");
         }
     }
 

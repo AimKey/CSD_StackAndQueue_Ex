@@ -20,7 +20,7 @@ public class PrintJob implements Comparable<PrintJob> {
     @Override
     public int compareTo(PrintJob other) {
         // Higher priority should come first in the queue
-        return Integer.compare(other.priority, this.priority);
+        return Integer.compare(this.priority, other.priority);
     }
 
     @Override

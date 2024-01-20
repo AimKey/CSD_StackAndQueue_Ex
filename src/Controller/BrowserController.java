@@ -5,7 +5,6 @@ import Model.Browser;
 import Model.Stack;
 import View.Menu;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,7 +48,7 @@ public class BrowserController extends Menu<String> {
                 try {
                     navigate();
                 } catch (Exception ex) {
-                    Logger.getLogger(BrowserController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Hehe chua fix");
                 }
                 break;
             }
@@ -67,7 +66,7 @@ public class BrowserController extends Menu<String> {
             Browser newBrowser = new Browser(pageTitle, desc);
             forwardStack.push(newBrowser);
 //            currentBrowser = newBrowser;
-            System.out.println("Added a new page: " + newBrowser + " at the last position");
+            System.out.println("Added a new page: " + newBrowser);
             String choice = library.getString("Continue (y/n)?: ");
             if (choice.equalsIgnoreCase("n")) {
                 break;
@@ -76,15 +75,15 @@ public class BrowserController extends Menu<String> {
     }
 
     /**
-     * pop the current backstack
-     * push current browser to forward stack
-     * current browser point to the browser popped by the backstack
+     * pop the current backstack push current browser to forward stack current
+     * browser point to the browser popped by the backstack
      */
     public void goBack() {
         try {
             Browser temp = backStack.pop();
-            if (currentBrowser != null) history.push(currentBrowser);
-
+            if (currentBrowser != null) {
+                history.push(currentBrowser);
+            }
             forwardStack.push(currentBrowser);
             currentBrowser = temp;
             System.out.println("Went back to: " + currentBrowser);
@@ -96,8 +95,9 @@ public class BrowserController extends Menu<String> {
     public void goForward() {
         try {
             Browser temp = forwardStack.pop();
-            if (currentBrowser != null) history.push(currentBrowser);
-
+            if (currentBrowser != null) {
+                history.push(currentBrowser);
+            }
             backStack.push(currentBrowser);
             currentBrowser = temp;
             System.out.println("Went forward to: " + currentBrowser);
@@ -126,7 +126,9 @@ public class BrowserController extends Menu<String> {
             steps--;
         }
         System.out.println("Went back to: " + currentBrowser);
-        if (currentBrowser != null) history.push(currentBrowser);
+        if (currentBrowser != null) {
+            history.push(currentBrowser);
+        }
     }
 
     private void navigateForward(int steps) throws Exception {
@@ -137,7 +139,9 @@ public class BrowserController extends Menu<String> {
             steps--;
         }
         System.out.println("Went forward to: " + currentBrowser);
-        if (currentBrowser != null) history.push(currentBrowser);
+        if (currentBrowser != null) {
+            history.push(currentBrowser);
+        }
     }
 
     public void getHistory() {

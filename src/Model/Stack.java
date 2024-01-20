@@ -12,7 +12,6 @@ import java.util.List;
 public class Stack<T> {
 
     Node<T> head;
-
     public void push(T data) {
         if (head == null) {
             head = new Node<>(data, null);

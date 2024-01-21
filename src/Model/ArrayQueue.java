@@ -128,8 +128,8 @@ public class ArrayQueue<T extends Comparable<T>> {
         int count = 0;
         for (Node<T> node : a) {
             if (node != null) {
-                System.out.print("[" + node.getNodeData() + "] ");
                 count++;
+                System.out.println(count + ". " + node.getNodeData());
             }
         }
 

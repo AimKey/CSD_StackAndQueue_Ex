@@ -3,18 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Controller/MainController.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Model/Browser.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Common/Algorithm.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Model/Stack.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/View/Menu.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Controller/BrowserController.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Model/PrintJob.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Main.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Common/Library.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Controller/PrintController.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Model/Node.java</file>
-            <file>file:/E:/FPT/Study%20stuffs/3.SP24/CSD201/Code/CSD_StackAndQueue_Ex/src/Model/ArrayQueue.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Common/Library.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Common/Algorithm.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Controller/MainController.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Model/Node.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/View/Menu.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Model/ArrayQueue.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Controller/PrintController.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Model/Stack.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Model/Browser.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Controller/BrowserController.java</file>
+            <file>file:/E:/FPT/Spring%202024/CSD201/projects/Stack_Queue_Ex/src/Main.java</file>
         </group>
     </open-files>
 </project-private>

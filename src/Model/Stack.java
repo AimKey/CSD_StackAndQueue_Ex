@@ -12,12 +12,14 @@ import java.util.List;
 public class Stack<T> {
 
     Node<T> head;
+    int size = 0;
     public void push(T data) {
         if (head == null) {
             head = new Node<>(data, null);
         } else {
             head = new Node<>(data, head);
         }
+        size++;
     }
 
     public boolean isEmpty() {
@@ -30,6 +32,7 @@ public class Stack<T> {
         }
         T res = head.getNodeData();
         head = head.next;
+        size--;
         return res;
     }
 
@@ -50,6 +53,7 @@ public class Stack<T> {
 
     public void clear() {
         this.head = null;
+        size = 0;
     }
 
     public List<T> getElements() {
@@ -65,14 +69,6 @@ public class Stack<T> {
     }
 
     public int size() {
-        int count = 0;
-        Node<T> current = head;
-
-        while (current != null) {
-            count++;
-            current = current.next;
-        }
-
-        return count;
+        return size;
     }
 }
